@@ -35,12 +35,20 @@ Bootstrap, because the base CSS is compiled once.
 A skin owns:
 
 - the accent color and its hover shade;
+- the chrome colors, which paint the top bar, the rail headers and the
+  Plone toolbar;
 - the logo and the application icon;
 - the workflow state colors;
 - the advice colors.
 
 Everything else belongs to the base. If a design needs a skin to change
 something outside this list, the change belongs in the base.
+
+**Load order.** Plone renders the Diazo theme CSS after every bundle of
+the resource registry, so a skin bundle that declares an ordinary
+dependency lands *before* the base and loses. A skin therefore declares
+``depends`` as ``all``, which moves it to the deferred group that Plone
+renders last. See ``profiles/iadelib/registry.xml``.
 
 **Limit to know.** Bootstrap 5.3 bakes the Sass value of ``$primary``
 into components such as ``.btn-primary``. A skin that overrides
@@ -74,11 +82,15 @@ markup, and a mismatch gives CSS that does not fit the page.
 Diazo files
 ===========
 
-``theme/index.html`` and ``theme/rules.xml`` are a copy of
-plonetheme.barceloneta 3.3.4, with the resource paths changed to
-``++theme++imioapps``. The theme owns them so that ``production-css`` in
-``manifest.cfg`` serves the iMio stylesheet in place of the Barceloneta
-one.
+``theme/rules.xml`` is a copy of plonetheme.barceloneta 3.3.4, with the
+resource paths changed to ``++theme++imioapps``. ``theme/index.html`` is
+the same copy with one change: the logo moved inside the navbar, so the
+brand, the sections and the search share one bar. The theme owns both
+files so that ``production-css`` in ``manifest.cfg`` serves the iMio
+stylesheet in place of the Barceloneta one.
+
+Every Diazo rule selects by CSS selector, so a node may move inside
+``index.html`` as long as it keeps its id.
 
 Resync both files when the ``plonetheme.barceloneta`` egg moves to a new
 version. A Diazo theme needs its own rules: a ``<theme>`` element on its
@@ -91,6 +103,31 @@ Fonts
 The fonts are self-hosted, not loaded from Google Fonts. Belgian public
 sector sites must not send visitor IP addresses to a third party font
 service. Drop the font files in ``theme/fonts``. See the README there.
+
+
+Surfaces
+========
+
+``scss/_custom.scss`` declares the skin contract and imports one partial
+per surface. Each partial styles the markup Plone renders, so read the
+page source before you write a rule.
+
+``chrome/_shell.scss``
+    Full width layout, the light page field and the fixed rail width.
+
+``chrome/_toolbar.scss``
+    The Plone toolbar of editors and managers, in the chrome colors.
+
+``chrome/_topbar.scss``
+    The brand tile, the sections and the search. The meeting
+    configuration tabs carry the id ``portaltab-mc_<config-id>``, which
+    ``plonemeeting.core`` builds in ``PMCatalogNavigationTabs``. A dot
+    marks them, because these tabs switch application and the others move
+    inside one.
+
+``chrome/_rail.scss``
+    The saved searches of the active configuration. The markup comes from
+    the ``eea.facetednavigation`` tag cloud widget inside a portlet.
 
 
 Design source

@@ -1,0 +1,68 @@
+// =========================================================================
+// Application shell.
+//
+// iA.Delib is a back office. Every screen is a dense list or a long form,
+// so the shell takes the full window width. Barceloneta centres a reading
+// column, which gives a dashboard half the screen it needs.
+// =========================================================================
+
+@import "../tokens";
+
+#content-header,
+#mainnavigation-wrapper .container,
+#above-content-wrapper .container,
+.outer-wrapper > .container,
+#portal-footer-wrapper .container {
+  max-width: none;
+}
+
+// The bar keeps a tighter gutter than the page.
+#mainnavigation-wrapper .container {
+  padding-inline: $imio-sp-3;
+}
+
+.outer-wrapper > .container,
+#above-content-wrapper .container {
+  padding-inline: $imio-shell-gutter;
+}
+
+// The page sits on a light field. Cards and tables then read as surfaces
+// on top of it.
+body {
+  background: var(--imio-bg-1);
+}
+
+#main-container {
+  --#{$prefix}gutter-x: #{$imio-sp-4};
+  padding-block: $imio-sp-4;
+}
+
+// The content is one white surface.
+#portal-column-content > #content {
+  background: var(--imio-bg-0);
+  border: 1px solid var(--imio-border);
+  border-radius: var(--imio-radius-md);
+  padding: $imio-sp-5;
+}
+
+// The rail keeps a fixed width. A percentage column grows with the window
+// and steals the room the dashboard needs.
+@include media-breakpoint-up(lg) {
+  body.col-one #portal-column-one {
+    flex: 0 0 var(--imio-rail-w);
+    width: var(--imio-rail-w);
+    max-width: var(--imio-rail-w);
+  }
+
+  body.col-one #portal-column-content {
+    flex: 1 1 0%;
+    width: auto;
+    max-width: none;
+  }
+}
+
+// Barceloneta keeps a hero block for a front page. An application fills
+// no page with it, so it must take no room.
+#hero {
+  display: none;
+}

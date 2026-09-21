@@ -5,7 +5,8 @@
 // that _custom.scss declares.
 //
 // iA.Delib is the reference application, so the accent stays the iMio
-// magenta of the base. The workflow colors are the real difference.
+// magenta of the base. The chrome and the workflow colors are the real
+// difference.
 // =========================================================================
 
 @import "../tokens";
@@ -30,6 +31,10 @@ $iadelib-states: (
 
 :root {
   --imio-skin: "iadelib";
+
+  // The chrome keeps the navy of iA.Delib. The magenta stays the accent,
+  // so the brand still reads on every action.
+  --imio-chrome-bg: #{$imio-navy};
 
   @each $state, $color in $iadelib-states {
     --imio-state-#{$state}: #{$color};

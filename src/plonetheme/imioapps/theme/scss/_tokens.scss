@@ -18,6 +18,7 @@ $imio-black:         #1C1C1C;   // Primary text, h1 and h2
 $imio-grey-dark:     #3C3C3B;   // Secondary text, h3
 $imio-grey-light:    #D2D2D2;   // Light secondary text
 $imio-grey-border:   #EDEDED;   // Borders, rules, card edges
+$imio-border-strong: $imio-grey-light;  // Hover borders, dividers that must read
 $imio-grey-bg:       #F8F8F8;   // Card fills, section background
 $imio-white:         #FFFFFF;
 
@@ -33,6 +34,12 @@ $imio-negative:      #B3004B;
 $imio-positive-text: mix($imio-positive, $imio-black, 45%);
 $imio-warning-text:  mix($imio-warning, $imio-black, 45%);
 $imio-negative-text: mix($imio-negative, $imio-black, 85%);
+
+// --- Chrome --------------------------------------------------------------
+// The top bar and the rail headers. Each application picks its own chrome
+// color through the custom properties in _custom.scss. The base theme uses
+// the brand grey. iA.Delib keeps the navy its users know.
+$imio-navy:          #2A3F54;
 
 // --- Typography ----------------------------------------------------------
 $imio-font-display: "Quicksand", Arial, sans-serif;
@@ -76,6 +83,7 @@ $imio-shadow-xs: 0 1px 2px rgba($imio-black, 0.04);
 $imio-shadow-sm: 0 2px 6px rgba($imio-black, 0.06);
 $imio-shadow-md: 0 6px 16px rgba($imio-black, 0.08);
 $imio-shadow-lg: 0 16px 40px rgba($imio-black, 0.10);
+$imio-shadow-accent: 0 6px 18px rgba($imio-magenta, 0.25);
 
 // --- Motion --------------------------------------------------------------
 $imio-ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
@@ -83,3 +91,10 @@ $imio-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 $imio-dur-fast:    120ms;
 $imio-dur-med:     220ms;
 $imio-dur-slow:    400ms;
+
+// --- Shell ---------------------------------------------------------------
+// The application chrome. The top bar holds the brand, the sections and the
+// search. The rail holds the searches of the active application.
+$imio-chrome-h: 46px;
+$imio-rail-w:   240px;
+$imio-shell-gutter: $imio-sp-4;

@@ -17,6 +17,15 @@
   --imio-accent-hover: #{$imio-magenta-dark};
   --imio-accent-soft:  #{$imio-pink-soft};
 
+  // Application chrome. The top bar and the rail headers take these
+  // colors. The base theme uses the brand grey.
+  --imio-chrome-bg:       #{$imio-grey-dark};
+  --imio-chrome-fg:       #{$imio-white};
+  --imio-chrome-fg-muted: #{rgba($imio-white, 0.72)};
+  --imio-chrome-hover:    #{rgba($imio-white, 0.1)};
+  --imio-chrome-active:   #{rgba($imio-white, 0.18)};
+  --imio-chrome-line:     #{rgba($imio-white, 0.16)};
+
   // Workflow state colors. Each application has its own workflow, so each
   // skin supplies its own values.
   --imio-state-draft:     #{$imio-grey-light};
@@ -39,22 +48,32 @@
   --imio-bg-0: #{$imio-white};
   --imio-bg-1: #{$imio-grey-bg};
   --imio-border: #{$imio-grey-border};
+  --imio-border-strong: #{$imio-border-strong};
 
   --imio-radius-sm: #{$imio-radius-sm};
   --imio-radius-md: #{$imio-radius-md};
   --imio-radius-lg: #{$imio-radius-lg};
 
+  --imio-shadow-xs: #{$imio-shadow-xs};
   --imio-shadow-sm: #{$imio-shadow-sm};
   --imio-shadow-md: #{$imio-shadow-md};
+  --imio-shadow-accent: #{$imio-shadow-accent};
 
   --imio-ease-out: #{$imio-ease-out};
   --imio-dur-fast: #{$imio-dur-fast};
   --imio-dur-med:  #{$imio-dur-med};
+
+  --imio-chrome-h: #{$imio-chrome-h};
+  --imio-rail-w:   #{$imio-rail-w};
 }
 
 // --- Components ----------------------------------------------------------
-// Add the chrome, the dashboard and the content views here, one partial
-// per surface. Keep each partial free of raw hex values.
+// One partial per surface. Keep each partial free of raw hex values.
+
+@import "chrome/shell";
+@import "chrome/toolbar";
+@import "chrome/topbar";
+@import "chrome/rail";
 
 // --- Workflow state badge ------------------------------------------------
 // plonemeeting.core registers the viewlet that renders this badge. A skin

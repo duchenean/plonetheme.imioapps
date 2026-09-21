@@ -1,13 +1,18 @@
 <?xml version="1.0"?>
 <registry>
 
-  <!-- Skin CSS for GED. It loads after the base theme CSS and only
-       redefines the custom properties a skin owns. -->
+  <!-- Skin CSS for GED. It redefines only the custom properties a skin
+       owns, so it must load after the base theme CSS.
+
+       Plone renders the Diazo theme CSS after every bundle of the
+       registry. The value "all" moves a bundle to the deferred group,
+       which Plone renders after the theme CSS. Any other value puts the
+       skin before the base, where the base wins. -->
   <records interface="plone.base.interfaces.resources.IBundleRegistry"
            prefix="plone.bundles/imioapps-ged">
     <value key="enabled">True</value>
     <value key="csscompilation">++theme++imioapps/styles/skin-ged.min.css</value>
-    <value key="depends">plone</value>
+    <value key="depends">all</value>
     <value key="load_async">False</value>
     <value key="load_defer">False</value>
   </records>

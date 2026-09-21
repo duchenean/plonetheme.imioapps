@@ -1,0 +1,189 @@
+// =========================================================================
+// Left rail.
+//
+// The rail lists the saved searches of the active meeting configuration.
+// eea.facetednavigation renders it as a tag cloud inside a portlet:
+//
+//   #portal-column-one
+//     dl.portlet
+//       dt.portletHeader > a.tile            the configuration name
+//       dd.portletItem
+//         .faceted-tagscloud-collection-widget
+//           ul > .category                   one group, "Points", "Seances"
+//               > .title                     the group name
+//               > li > a > span.term-label   one search
+//               > li.faceted-tag-selected    the open search
+//               > .portlet_add_icons         the add button of the group
+//               > .loading                   a group that loads later
+// =========================================================================
+
+@import "../tokens";
+
+#portal-column-one {
+  font-size: $imio-fs-small;
+
+  .portletWrapper {
+    margin-bottom: $imio-sp-3;
+  }
+
+  .portlet {
+    margin-bottom: 0;
+    border: 1px solid var(--imio-border);
+    border-radius: var(--imio-radius-md);
+    background: var(--imio-bg-0);
+    box-shadow: none;
+    overflow: hidden;
+  }
+}
+
+// --- Header --------------------------------------------------------------
+.portletHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $imio-sp-2;
+  margin: 0;
+  padding: $imio-sp-2 $imio-sp-3;
+  background: var(--imio-chrome-bg);
+  color: var(--imio-chrome-fg);
+  font-family: $imio-font-display;
+  font-size: $imio-fs-small;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  a,
+  a:hover {
+    color: var(--imio-chrome-fg);
+    text-decoration: none;
+  }
+
+  // Barceloneta keeps two empty corner spans from the old rounded header.
+  .portletTopLeft,
+  .portletTopRight {
+    display: none;
+  }
+}
+
+.portletItem {
+  margin: 0;
+  padding: $imio-sp-2 0 $imio-sp-3;
+}
+
+// --- Search list ---------------------------------------------------------
+.faceted-tagscloud-collection-widget {
+  form {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .category {
+    padding: 0 $imio-sp-2;
+
+    + .category {
+      margin-top: $imio-sp-2;
+      padding-top: $imio-sp-2;
+      border-top: 1px solid var(--imio-border);
+    }
+  }
+
+  .title {
+    padding: $imio-sp-2 $imio-sp-2 $imio-sp-1;
+    color: var(--imio-fg-1);
+    font-family: $imio-font-display;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li > a {
+    display: block;
+    padding: $imio-sp-1 - 1px $imio-sp-2;
+    border-radius: var(--imio-radius-sm);
+    color: var(--imio-fg-2);
+    font-size: $imio-fs-small;
+    line-height: $imio-lh-snug;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background var(--imio-dur-fast) var(--imio-ease-out),
+                color var(--imio-dur-fast) var(--imio-ease-out);
+  }
+
+  li > a:hover,
+  li > a:focus-visible {
+    background: var(--imio-bg-1);
+    color: var(--imio-fg-1);
+    text-decoration: none;
+  }
+
+  // The open search.
+  li.faceted-tag-selected > a {
+    color: var(--imio-accent);
+    font-weight: 700;
+  }
+
+  // The add button of a group sits on the group title row.
+  .portlet_add_icons {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    gap: $imio-sp-1;
+    padding-top: $imio-sp-2;
+
+    img {
+      width: 16px;
+      height: 16px;
+      opacity: 0.7;
+      transition: opacity var(--imio-dur-fast) var(--imio-ease-out);
+    }
+
+    a:hover img {
+      opacity: 1;
+    }
+  }
+
+  // A group that loads after the page. The widget ships a spinner image
+  // that Plone 6 no longer serves, so the rail draws its own.
+  .loading {
+    display: flex;
+    align-items: center;
+    padding: $imio-sp-2;
+
+    img {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--imio-border-strong);
+      border-top-color: var(--imio-accent);
+      border-radius: 50%;
+      animation: imio-spin 700ms linear infinite;
+    }
+  }
+}
+
+@keyframes imio-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faceted-tagscloud-collection-widget .loading::before {
+    animation: none;
+  }
+}

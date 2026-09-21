@@ -1,0 +1,26 @@
+// =========================================================================
+// Plone toolbar.
+//
+// Plone gives editors and managers a toolbar on the left. It is chrome, so
+// it takes the chrome colors. The layout stays the one Barceloneta ships.
+// =========================================================================
+
+@import "../tokens";
+
+:root {
+  --plone-toolbar-bg: var(--imio-chrome-bg);
+  --plone-toolbar-text-color: var(--imio-chrome-fg);
+  --plone-toolbar-link-color: var(--imio-chrome-hover);
+  --plone-toolbar-link-hover-color: var(--imio-chrome-fg);
+  --plone-toolbar-separator-color: var(--imio-chrome-line);
+
+  // Barceloneta asks for Roboto here. The theme ships no Roboto, so the
+  // toolbar takes the body face.
+  --plone-toolbar-font: #{$imio-font-body};
+}
+
+// The header row holds the collapse control only. A brand colored slab
+// there competes with the top bar, so it keeps the chrome tint.
+#edit-zone .toolbar-header {
+  background: var(--imio-chrome-active);
+}

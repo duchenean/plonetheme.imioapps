@@ -1,0 +1,209 @@
+// =========================================================================
+// Top bar.
+//
+// One dark bar holds the brand, the application switcher and the search.
+// index.html puts the logo inside the navbar so all three sit on one row.
+//
+// Plone builds the bar from:
+//   nav#portal-globalnav-wrapper.navbar-barceloneta
+//     a#portal-logo                    the brand tile
+//     ul#portal-globalnav              the sections
+//       li#portaltab-mc_<config-id>    one meeting configuration
+//     #portal-searchbox                the live search form
+// =========================================================================
+
+@import "../tokens";
+
+// Barceloneta paints the bar through the Bootstrap navbar custom
+// properties. Point them at the chrome colors so a skin can repaint the
+// whole bar with one value.
+.navbar-barceloneta {
+  --#{$prefix}navbar-background: var(--imio-chrome-bg);
+  --#{$prefix}navbar-color: var(--imio-chrome-fg-muted);
+  --#{$prefix}navbar-hover-color: var(--imio-chrome-fg);
+  --#{$prefix}navbar-active-color: var(--imio-chrome-fg);
+  --#{$prefix}navbar-hover-background: var(--imio-chrome-hover);
+  --#{$prefix}navbar-active-background: var(--imio-chrome-active);
+}
+
+#portal-globalnav-wrapper {
+  min-height: var(--imio-chrome-h);
+  padding: 0;
+
+  > .container {
+    display: flex;
+    align-items: center;
+    gap: $imio-sp-2;
+    min-height: var(--imio-chrome-h);
+  }
+}
+
+// --- Brand ---------------------------------------------------------------
+// A white tile carries the iMio mark. The mark holds its own magenta, so it
+// needs a light field to read. The Plone logo image stays in the markup for
+// the link text but never shows.
+#portal-logo {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 32px;
+  margin-right: $imio-sp-2;
+  border-radius: var(--imio-radius-sm);
+  background-color: var(--imio-bg-0);
+  background-image: url("../img/imio-mark.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+  transition: box-shadow var(--imio-dur-fast) var(--imio-ease-out);
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--imio-accent);
+  }
+
+  img {
+    display: none;
+  }
+}
+
+// --- Sections ------------------------------------------------------------
+#portal-globalnav {
+  align-items: center;
+  gap: 2px;
+
+  li {
+    background-color: transparent;
+
+    > a {
+      display: inline-flex;
+      align-items: center;
+      gap: $imio-sp-1 + 2px;
+      padding: $imio-sp-1 + 2px $imio-sp-3 + 2px;
+      border-radius: var(--imio-radius-sm);
+      color: var(--imio-chrome-fg-muted);
+      font-family: $imio-font-display;
+      font-size: $imio-fs-small;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: background-color var(--imio-dur-fast) var(--imio-ease-out),
+                  color var(--imio-dur-fast) var(--imio-ease-out);
+    }
+
+    > a:hover,
+    > a:focus-visible {
+      background-color: var(--imio-chrome-hover);
+      color: var(--imio-chrome-fg);
+      text-decoration: none;
+    }
+
+    &.selected > a,
+    &.current > a,
+    &.inPath > a {
+      background-color: var(--imio-chrome-active);
+      color: var(--imio-chrome-fg);
+    }
+  }
+
+  // --- Application switcher ----------------------------------------------
+  // plonemeeting.core gives every meeting configuration a tab with the id
+  // mc_<config-id>. These tabs switch application, the others move inside
+  // one. A marker keeps the two apart.
+  li[id^="portaltab-mc_"] > a::before {
+    content: "";
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--imio-chrome-fg-muted);
+    transition: background var(--imio-dur-fast) var(--imio-ease-out);
+  }
+
+  li[id^="portaltab-mc_"].selected > a::before {
+    background: var(--imio-accent);
+  }
+}
+
+// --- Search --------------------------------------------------------------
+#portal-searchbox {
+  flex: none;
+  margin-left: auto;
+
+  form {
+    align-items: center;
+    gap: $imio-sp-1;
+  }
+
+  .searchField {
+    width: 220px;
+    height: 30px;
+    padding: 0 $imio-sp-3;
+    border: 1px solid var(--imio-chrome-line);
+    border-radius: var(--imio-radius-sm);
+    background: var(--imio-chrome-hover);
+    color: var(--imio-chrome-fg);
+    font-size: $imio-fs-small;
+    margin-right: 0;
+
+    &::placeholder {
+      color: var(--imio-chrome-fg-muted);
+      opacity: 1;
+    }
+
+    &:focus {
+      border-color: var(--imio-accent);
+      background: var(--imio-chrome-active);
+      box-shadow: none;
+      color: var(--imio-chrome-fg);
+    }
+  }
+
+  .searchButton {
+    height: 30px;
+    padding: 0 $imio-sp-3;
+    border-color: var(--imio-chrome-line);
+    color: var(--imio-chrome-fg);
+    font-family: $imio-font-display;
+    font-size: $imio-fs-small;
+    font-weight: 700;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--imio-accent);
+      background: var(--imio-accent);
+      color: var(--imio-chrome-fg);
+    }
+  }
+}
+
+// --- Small screens -------------------------------------------------------
+// Below the navbar breakpoint Bootstrap moves the sections into the
+// offcanvas drawer. The drawer takes the chrome colors too.
+#portal-globalnav-wrapper .navbar-toggler {
+  flex: none;
+  margin-left: auto;
+  border-color: var(--imio-chrome-line);
+}
+
+@include media-breakpoint-down($nav-main-breakpoint) {
+  #portal-globalnav {
+    align-items: stretch;
+    gap: 0;
+
+    li > a {
+      width: 100%;
+      border-radius: 0;
+      padding: $imio-sp-3 $imio-sp-4;
+    }
+  }
+
+  #portal-searchbox {
+    margin: $imio-sp-3 $imio-sp-4 $imio-sp-4;
+
+    .searchField {
+      width: 100%;
+    }
+  }
+}
