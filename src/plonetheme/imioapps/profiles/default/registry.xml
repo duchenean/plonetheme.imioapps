@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<registry>
+
+  <!-- Diazo parameters that rules.xml needs.
+       manifest.cfg declares the same values, but plone.app.theming reads
+       the manifest only when it scans the themes and it caches the
+       result. Set the record here so a profile import always writes it. -->
+  <record interface="plone.app.theming.interfaces.IThemeSettings"
+          field="parameterExpressions">
+    <value purge="false">
+      <element key="ajax_load">python:request.get('ajax_load')</element>
+      <element key="portal_url">portal_state/portal_url</element>
+    </value>
+  </record>
+
+  <!-- The Plone 4 theme left this record behind. Version 3 defines no
+       IPlonethemeImioappsSettings interface, so remove it. -->
+  <record name="plonetheme.imioapps.interfaces.IPlonethemeImioappsSettings.help_url"
+          remove="true" />
+
+</registry>

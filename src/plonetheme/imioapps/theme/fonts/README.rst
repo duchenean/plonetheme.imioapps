@@ -5,21 +5,18 @@ The theme self-hosts its fonts. It does not load them from Google Fonts,
 because a Belgian public sector site must not send visitor IP addresses
 to a third party font service.
 
-Put these files here:
-
-- ``quicksand-latin-300-normal.woff2``
-- ``quicksand-latin-400-normal.woff2``
-- ``quicksand-latin-500-normal.woff2``
-- ``quicksand-latin-600-normal.woff2``
-- ``quicksand-latin-700-normal.woff2``
-- ``nunito-latin-400-normal.woff2``
-- ``nunito-latin-600-normal.woff2``
-- ``nunito-latin-700-normal.woff2``
+``npm run build`` copies the files here from the Fontsource packages.
+``npm run copy:fonts`` does it on its own. Quicksand and Nunito are both
+under the SIL Open Font License.
 
 Quicksand is the display face. Nunito stands in for Avenir LT Std as the
-body face. Replace Nunito with Avenir when the licence is available.
+body face. Replace Nunito with Avenir when the licence is available: drop
+the woff2 files here, change ``scss/_fonts.scss`` and take nunito out of
+``scripts/copy-fonts.mjs``.
 
-``scss/_fonts.scss`` declares the ``@font-face`` rules for these files.
+Keep the weight lists in ``scripts/copy-fonts.mjs`` and
+``scss/_fonts.scss`` in step.
+
 
 Roboto
 ------

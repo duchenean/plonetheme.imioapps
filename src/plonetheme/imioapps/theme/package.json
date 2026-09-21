@@ -5,12 +5,15 @@
   "private": true,
   "license": "GPL-2.0",
   "devDependencies": {
+    "@fontsource/nunito": "^5.3.0",
+    "@fontsource/quicksand": "^5.3.0",
     "@plone/plonetheme-barceloneta-base": "3.3.4",
     "bootstrap": "5.3.8",
     "sass": "1.77.6"
   },
   "scripts": {
-    "build": "npm run build:base && npm run build:skins",
+    "build": "npm run copy:fonts && npm run build:base && npm run build:skins",
+    "copy:fonts": "node scripts/copy-fonts.mjs",
     "build:base": "sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/theme.scss styles/theme.min.css && sass --load-path=node_modules --quiet-deps --no-source-map scss/theme.scss styles/theme.css",
     "build:skins": "sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/skins/skin-iadelib.scss styles/skin-iadelib.min.css && sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/skins/skin-ged.scss styles/skin-ged.min.css",
     "watch": "sass --watch --load-path=node_modules --quiet-deps --no-source-map scss/theme.scss styles/theme.css"
