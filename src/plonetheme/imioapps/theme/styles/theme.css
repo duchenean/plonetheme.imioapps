@@ -15763,3 +15763,26 @@ p.highlight-paragraph {
   --imio-dur-fast: 120ms;
   --imio-dur-med: 220ms;
 }
+
+.imio-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 12px 2px 8px;
+  border: 1px solid var(--imio-border);
+  border-radius: 999px;
+  background: var(--imio-bg-0);
+  color: var(--imio-fg-1);
+  font-family: "Quicksand", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.imio-state-badge-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--imio-state-color, var(--imio-fg-3));
+}

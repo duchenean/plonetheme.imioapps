@@ -45,6 +45,7 @@ setup(
     install_requires=[
         "setuptools",
         "Products.CMFPlone",
+        "imio.helpers",
         "plone.app.theming",
         "plonetheme.barceloneta",
     ],

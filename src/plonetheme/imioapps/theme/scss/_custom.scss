@@ -55,3 +55,29 @@
 // --- Components ----------------------------------------------------------
 // Add the chrome, the dashboard and the content views here, one partial
 // per surface. Keep each partial free of raw hex values.
+
+// --- Workflow state badge ------------------------------------------------
+// plonemeeting.core registers the viewlet that renders this badge. A skin
+// gives each state its color through --imio-state-color.
+.imio-state-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $imio-sp-2;
+  padding: 2px $imio-sp-3 2px $imio-sp-2;
+  border: 1px solid var(--imio-border);
+  border-radius: $imio-radius-pill;
+  background: var(--imio-bg-0);
+  color: var(--imio-fg-1);
+  font-family: $imio-font-display;
+  font-size: $imio-fs-small;
+  font-weight: 600;
+  line-height: $imio-lh-snug;
+}
+
+.imio-state-badge-dot {
+  flex: none;
+  width: $imio-sp-2;
+  height: $imio-sp-2;
+  border-radius: 50%;
+  background: var(--imio-state-color, var(--imio-fg-3));
+}

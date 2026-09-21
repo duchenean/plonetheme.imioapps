@@ -10,24 +10,39 @@
 
 @import "../tokens";
 
+// State id to color. The ids come from the meetingitem, meeting and
+// meetingadvice workflows of plonemeeting.core. A profile package such as
+// plonemeeting.communes adds more states. Add them here.
+$iadelib-states: (
+  presented:         $imio-grey-light,
+  validated:         $imio-positive,
+  itemfrozen:        $imio-warning,
+  itempublished:     $imio-magenta,
+  accepted:          $imio-positive,
+  created:           $imio-grey-light,
+  frozen:            $imio-warning,
+  published:         $imio-magenta,
+  decided:           $imio-positive,
+  closed:            $imio-grey-dark,
+  advice_under_edit: $imio-grey-light,
+  advice_given:      $imio-positive,
+);
+
 :root {
   --imio-skin: "iadelib";
 
-  // The state ids come from the meetingitem, meeting and meetingadvice
-  // workflows of plonemeeting.core. A profile package such as
-  // plonemeeting.communes adds more states. Add them here.
-  --imio-state-presented:     #{$imio-grey-light};
-  --imio-state-validated:     #{$imio-positive};
-  --imio-state-itemfrozen:    #{$imio-warning};
-  --imio-state-itempublished: #{$imio-magenta};
-  --imio-state-accepted:      #{$imio-positive};
+  @each $state, $color in $iadelib-states {
+    --imio-state-#{$state}: #{$color};
+  }
 
-  --imio-state-created:   #{$imio-grey-light};
-  --imio-state-frozen:    #{$imio-warning};
-  --imio-state-published: #{$imio-magenta};
-  --imio-state-decided:   #{$imio-positive};
-  --imio-state-closed:    #{$imio-grey-dark};
+  --imio-advice-positive: #{$imio-positive};
+  --imio-advice-reserved: #{$imio-warning};
+  --imio-advice-negative: #{$imio-negative};
+  --imio-advice-pending:  #{$imio-grey-light};
+}
 
-  --imio-advice-under-edit: #{$imio-grey-light};
-  --imio-advice-given:      #{$imio-positive};
+@each $state, $color in $iadelib-states {
+  .imio-state-badge.state-#{$state} {
+    --imio-state-color: var(--imio-state-#{$state});
+  }
 }

@@ -1,0 +1,11 @@
+<span xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      class="imio-state-badge"
+      tal:define="state_infos view/state_infos"
+      tal:attributes="class string:imio-state-badge state-${state_infos/state_name}"
+      i18n:domain="plone">
+  <span class="imio-state-badge-dot" aria-hidden="true"></span>
+  <span class="visually-hidden" i18n:translate="label_state">State</span>
+  <span class="imio-state-badge-label"
+        tal:content="state_infos/state_title">State title</span>
+</span>
