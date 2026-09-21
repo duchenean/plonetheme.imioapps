@@ -66,6 +66,24 @@ compiled CSS is committed, because Plone serves it directly.
 ``scss/theme.scss`` sets the import order. Do not change it. Bootstrap
 needs the variables and the maps before the Barceloneta base.
 
+Keep the npm pin of ``@plone/plonetheme-barceloneta-base`` at the same
+version as the ``plonetheme.barceloneta`` egg. The two ship the same
+markup, and a mismatch gives CSS that does not fit the page.
+
+
+Diazo files
+===========
+
+``theme/index.html`` and ``theme/rules.xml`` are a copy of
+plonetheme.barceloneta 3.3.4, with the resource paths changed to
+``++theme++imioapps``. The theme owns them so that ``production-css`` in
+``manifest.cfg`` serves the iMio stylesheet in place of the Barceloneta
+one.
+
+Resync both files when the ``plonetheme.barceloneta`` egg moves to a new
+version. A Diazo theme needs its own rules: a ``<theme>`` element on its
+own copies no content and renders an empty page.
+
 
 Fonts
 =====

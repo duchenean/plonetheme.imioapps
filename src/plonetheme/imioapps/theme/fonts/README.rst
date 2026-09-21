@@ -20,3 +20,11 @@ Quicksand is the display face. Nunito stands in for Avenir LT Std as the
 body face. Replace Nunito with Avenir when the licence is available.
 
 ``scss/_fonts.scss`` declares the ``@font-face`` rules for these files.
+
+Roboto
+------
+
+The Barceloneta base declares ``@font-face`` rules for Roboto. This theme
+overrides the font stack with Quicksand and Nunito, so no rule uses
+Roboto. A browser does not download a font that no rule uses, so the
+theme does not ship the Roboto files.

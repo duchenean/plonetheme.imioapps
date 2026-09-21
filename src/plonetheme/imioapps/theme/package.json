@@ -5,7 +5,7 @@
   "private": true,
   "license": "GPL-2.0",
   "devDependencies": {
-    "@plone/plonetheme-barceloneta-base": "4.1.0",
+    "@plone/plonetheme-barceloneta-base": "3.3.4",
     "bootstrap": "5.3.8",
     "sass": "1.77.6"
   },
