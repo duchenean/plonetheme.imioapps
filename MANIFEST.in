@@ -1,0 +1,6 @@
+include *.rst
+include *.txt
+recursive-include src *.py *.zcml *.xml *.pt *.po *.mo
+recursive-include src/plonetheme/imioapps/theme *
+recursive-exclude src/plonetheme/imioapps/theme/node_modules *
+global-exclude *.pyc

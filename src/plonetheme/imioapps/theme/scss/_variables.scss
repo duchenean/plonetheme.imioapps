@@ -1,0 +1,112 @@
+// =========================================================================
+// Bootstrap 5 and Barceloneta variable overrides.
+//
+// Sass resolves variables at compile time, so this file must load before
+// the Barceloneta base. theme.scss sets the order.
+//
+// Every value here comes from _tokens.scss. Add no raw hex value.
+// =========================================================================
+
+@import "tokens";
+
+// --- Type scaling --------------------------------------------------------
+// Bootstrap scales headings with the viewport by default. The iMio type
+// table is absolute, so turn that off. h1 stays 24px at every width.
+$enable-rfs: false;
+
+// --- Theme colors --------------------------------------------------------
+$primary:   $imio-magenta;
+$secondary: $imio-grey-dark;
+$success:   $imio-positive;
+$warning:   $imio-warning;
+$danger:    $imio-negative;
+$info:      $imio-grey-dark;
+$light:     $imio-grey-bg;
+$dark:      $imio-black;
+
+// Bootstrap picks the foreground of a filled component with
+// color-contrast(). The bright brand green and yellow stay readable as a
+// button or a badge fill because of this. Keep the ratio at 4.5.
+$min-contrast-ratio: 4.5;
+
+// Text on a light background needs a darker shade than the fill.
+$success-text-emphasis: $imio-positive-text;
+$warning-text-emphasis: $imio-warning-text;
+$danger-text-emphasis:  $imio-negative-text;
+
+// --- Body and surfaces ---------------------------------------------------
+$body-color:               $imio-black;
+$body-bg:                  $imio-white;
+$body-secondary-color:     $imio-grey-dark;
+$body-secondary-bg:        $imio-grey-bg;
+$body-tertiary-bg:         $imio-grey-bg;
+$border-color:             $imio-grey-border;
+$border-color-translucent: $imio-grey-border;
+
+// --- Links ---------------------------------------------------------------
+$link-color:                     $imio-magenta;
+$link-hover-color:               $imio-magenta-dark;
+$link-decoration:                none;
+$link-hover-decoration:          underline;
+$link-underline-offset:          3px;
+
+// --- Typography ----------------------------------------------------------
+$font-family-sans-serif: $imio-font-body;
+$font-family-monospace:  $imio-font-mono;
+$headings-font-family:   $imio-font-display;
+$headings-color:         $imio-black;
+$headings-font-weight:   700;
+$headings-line-height:   $imio-lh-snug;
+
+// 14px body. The root stays at 16px, so 0.875rem gives 14px.
+$font-size-base:  0.875rem;
+$font-size-sm:    $font-size-base * 0.857;   // 12px
+$line-height-base: $imio-lh-body;
+
+// Keep the brand type table exact. The root stays at 16px, so these rem
+// values give 24 / 18 / 16 / 14 px.
+$h1-font-size: 1.5rem;
+$h2-font-size: 1.125rem;
+$h3-font-size: 1rem;
+$h4-font-size: 0.875rem;
+$h5-font-size: 0.875rem;
+$h6-font-size: 0.875rem;
+
+// --- Radii ---------------------------------------------------------------
+$border-radius-sm:   $imio-radius-sm;
+$border-radius:      $imio-radius-md;
+$border-radius-lg:   $imio-radius-lg;
+$border-radius-xl:   $imio-radius-xl;
+$border-radius-pill: $imio-radius-pill;
+
+// --- Shadows -------------------------------------------------------------
+$box-shadow-sm: $imio-shadow-sm;
+$box-shadow:    $imio-shadow-md;
+$box-shadow-lg: $imio-shadow-lg;
+
+// --- Focus ---------------------------------------------------------------
+// Keyboard users must see the focus ring on the magenta accent.
+$focus-ring-width:   3px;
+$focus-ring-opacity: 0.35;
+$focus-ring-color:   rgba($imio-magenta, $focus-ring-opacity);
+
+// --- Density -------------------------------------------------------------
+// A dashboard shows many rows at once. Keep cells and controls tight.
+$table-cell-padding-y:    $imio-sp-1 + 2px;
+$table-cell-padding-x:    $imio-sp-2;
+$table-cell-padding-y-sm: $imio-sp-1;
+$table-cell-padding-x-sm: $imio-sp-1 + 2px;
+$table-border-color:      $imio-grey-border;
+$table-striped-bg:        $imio-grey-bg;
+
+$input-btn-padding-y: $imio-sp-1 + 2px;
+$input-btn-padding-x: $imio-sp-3;
+$input-btn-font-size: $font-size-base;
+$btn-font-size:       $imio-fs-btn;
+$btn-font-family:     $imio-font-display;
+$btn-font-weight:     600;
+$input-border-color:  $imio-grey-light;
+
+// --- Motion --------------------------------------------------------------
+$transition-base:     all $imio-dur-med $imio-ease-out;
+$transition-collapse: height $imio-dur-med $imio-ease-in-out;

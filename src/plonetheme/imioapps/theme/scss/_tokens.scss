@@ -1,0 +1,85 @@
+// =========================================================================
+// iMio design tokens.
+//
+// This file holds Sass variables only. It writes no CSS. You can import it
+// as many times as you need.
+//
+// This is the single source of truth. Derive every Bootstrap and
+// Barceloneta variable from these values in _variables.scss. Do not put a
+// raw hex value anywhere else.
+// =========================================================================
+
+// --- Core palette --------------------------------------------------------
+$imio-magenta:       #E6007E;   // Accent, links, calls to action
+$imio-magenta-dark:  #B3004B;   // Hover, pressed
+$imio-pink-soft:     #FFADD9;   // Soft callout, hover tint
+
+$imio-black:         #1C1C1C;   // Primary text, h1 and h2
+$imio-grey-dark:     #3C3C3B;   // Secondary text, h3
+$imio-grey-light:    #D2D2D2;   // Light secondary text
+$imio-grey-border:   #EDEDED;   // Borders, rules, card edges
+$imio-grey-bg:       #F8F8F8;   // Card fills, section background
+$imio-white:         #FFFFFF;
+
+// --- Semantic colors -----------------------------------------------------
+// These are display values. They are bright. Use them for fills, dots and
+// borders. For text on a light background use the -text values below.
+$imio-positive:      #00E667;
+$imio-warning:       #E6DA00;
+$imio-negative:      #B3004B;
+
+// Darker shades for text. mix() is a core Sass function, so these work
+// before Bootstrap loads its own color helpers.
+$imio-positive-text: mix($imio-positive, $imio-black, 45%);
+$imio-warning-text:  mix($imio-warning, $imio-black, 45%);
+$imio-negative-text: mix($imio-negative, $imio-black, 85%);
+
+// --- Typography ----------------------------------------------------------
+$imio-font-display: "Quicksand", Arial, sans-serif;
+$imio-font-body:    "Nunito", "Avenir LT Std", Arial, sans-serif;
+$imio-font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+// The brand type table is absolute: h1 24, h2 18, h3 16, h4 14, body 14.
+$imio-fs-body:  14px;
+$imio-fs-small: 12px;
+$imio-fs-h1:    24px;
+$imio-fs-h2:    18px;
+$imio-fs-h3:    16px;
+$imio-fs-h4:    14px;
+$imio-fs-btn:   16px;   // Buttons read one step above body text
+
+$imio-lh-tight: 1.15;
+$imio-lh-snug:  1.3;
+$imio-lh-body:  1.55;
+
+// --- Spacing -------------------------------------------------------------
+// A 4px base, then 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64.
+$imio-sp-1: 4px;
+$imio-sp-2: 8px;
+$imio-sp-3: 12px;
+$imio-sp-4: 16px;
+$imio-sp-5: 24px;
+$imio-sp-6: 32px;
+$imio-sp-7: 48px;
+$imio-sp-8: 64px;
+
+// --- Radii ---------------------------------------------------------------
+$imio-radius-xs:   2px;
+$imio-radius-sm:   4px;
+$imio-radius-md:   8px;
+$imio-radius-lg:  12px;
+$imio-radius-xl:  20px;
+$imio-radius-pill: 999px;
+
+// --- Shadows -------------------------------------------------------------
+$imio-shadow-xs: 0 1px 2px rgba($imio-black, 0.04);
+$imio-shadow-sm: 0 2px 6px rgba($imio-black, 0.06);
+$imio-shadow-md: 0 6px 16px rgba($imio-black, 0.08);
+$imio-shadow-lg: 0 16px 40px rgba($imio-black, 0.10);
+
+// --- Motion --------------------------------------------------------------
+$imio-ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+$imio-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+$imio-dur-fast:    120ms;
+$imio-dur-med:     220ms;
+$imio-dur-slow:    400ms;

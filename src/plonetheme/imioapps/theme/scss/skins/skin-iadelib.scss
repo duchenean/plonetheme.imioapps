@@ -1,0 +1,33 @@
+// =========================================================================
+// iA.Delib skin.
+//
+// It loads after the base theme CSS. It redefines only the skin surface
+// that _custom.scss declares.
+//
+// iA.Delib is the reference application, so the accent stays the iMio
+// magenta of the base. The workflow colors are the real difference.
+// =========================================================================
+
+@import "../tokens";
+
+:root {
+  --imio-skin: "iadelib";
+
+  // The state ids come from the meetingitem, meeting and meetingadvice
+  // workflows of plonemeeting.core. A profile package such as
+  // plonemeeting.communes adds more states. Add them here.
+  --imio-state-presented:     #{$imio-grey-light};
+  --imio-state-validated:     #{$imio-positive};
+  --imio-state-itemfrozen:    #{$imio-warning};
+  --imio-state-itempublished: #{$imio-magenta};
+  --imio-state-accepted:      #{$imio-positive};
+
+  --imio-state-created:   #{$imio-grey-light};
+  --imio-state-frozen:    #{$imio-warning};
+  --imio-state-published: #{$imio-magenta};
+  --imio-state-decided:   #{$imio-positive};
+  --imio-state-closed:    #{$imio-grey-dark};
+
+  --imio-advice-under-edit: #{$imio-grey-light};
+  --imio-advice-given:      #{$imio-positive};
+}

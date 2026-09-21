@@ -1,0 +1,57 @@
+// =========================================================================
+// iMio rules on top of the Barceloneta base.
+//
+// This file also declares the skin contract. A skin file redefines the
+// custom properties in the "skin surface" block and nothing else.
+// =========================================================================
+
+@import "tokens";
+
+:root {
+  // --- Skin surface ------------------------------------------------------
+  // A skin may redefine every property in this block. It may redefine
+  // nothing else. See the README for the reason.
+  --imio-skin: "base";
+
+  --imio-accent:       #{$imio-magenta};
+  --imio-accent-hover: #{$imio-magenta-dark};
+  --imio-accent-soft:  #{$imio-pink-soft};
+
+  // Workflow state colors. Each application has its own workflow, so each
+  // skin supplies its own values.
+  --imio-state-draft:     #{$imio-grey-light};
+  --imio-state-progress:  #{$imio-warning};
+  --imio-state-validated: #{$imio-positive};
+  --imio-state-closed:    #{$imio-grey-dark};
+  --imio-state-refused:   #{$imio-negative};
+
+  // Advice colors.
+  --imio-advice-positive: #{$imio-positive};
+  --imio-advice-reserved: #{$imio-warning};
+  --imio-advice-negative: #{$imio-negative};
+  --imio-advice-pending:  #{$imio-grey-light};
+
+  // --- Base surface ------------------------------------------------------
+  // A skin must not redefine anything below this line.
+  --imio-fg-1: #{$imio-black};
+  --imio-fg-2: #{$imio-grey-dark};
+  --imio-fg-3: #{$imio-grey-light};
+  --imio-bg-0: #{$imio-white};
+  --imio-bg-1: #{$imio-grey-bg};
+  --imio-border: #{$imio-grey-border};
+
+  --imio-radius-sm: #{$imio-radius-sm};
+  --imio-radius-md: #{$imio-radius-md};
+  --imio-radius-lg: #{$imio-radius-lg};
+
+  --imio-shadow-sm: #{$imio-shadow-sm};
+  --imio-shadow-md: #{$imio-shadow-md};
+
+  --imio-ease-out: #{$imio-ease-out};
+  --imio-dur-fast: #{$imio-dur-fast};
+  --imio-dur-med:  #{$imio-dur-med};
+}
+
+// --- Components ----------------------------------------------------------
+// Add the chrome, the dashboard and the content views here, one partial
+// per surface. Keep each partial free of raw hex values.

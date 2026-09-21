@@ -1,0 +1,16 @@
+// =========================================================================
+// Theme entry point.
+//
+// The import order is mandatory. Bootstrap reads the variables and the
+// maps while it compiles, so both must come before the Barceloneta base.
+// See https://getbootstrap.com/docs/5.3/customize/sass/#importing
+// =========================================================================
+
+@import "fonts";
+@import "variables";
+@import "maps";
+
+// Barceloneta pulls in Bootstrap with the variables set above.
+@import "../node_modules/@plone/plonetheme-barceloneta-base/scss/barceloneta";
+
+@import "custom";

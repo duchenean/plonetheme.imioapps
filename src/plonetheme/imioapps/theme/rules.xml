@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <!-- The markup comes from Barceloneta. This theme only replaces the
+       stylesheet, through production-css in manifest.cfg.
+       Verify this reference at the first buildout. If Diazo cannot
+       resolve another theme directory, copy index.html from
+       plonetheme.barceloneta into this folder and point href at it. -->
+  <theme href="++theme++barceloneta/index.html" />
+
+</rules>

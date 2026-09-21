@@ -1,0 +1,18 @@
+{
+  "name": "plonetheme-imioapps",
+  "version": "3.0.0",
+  "description": "SCSS sources for the iMio applications theme",
+  "private": true,
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "@plone/plonetheme-barceloneta-base": "4.1.0",
+    "bootstrap": "5.3.8",
+    "sass": "1.77.6"
+  },
+  "scripts": {
+    "build": "npm run build:base && npm run build:skins",
+    "build:base": "sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/theme.scss styles/theme.min.css && sass --load-path=node_modules --quiet-deps --no-source-map scss/theme.scss styles/theme.css",
+    "build:skins": "sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/skins/skin-iadelib.scss styles/skin-iadelib.min.css && sass --load-path=node_modules --quiet-deps --no-source-map --style=compressed scss/skins/skin-ged.scss styles/skin-ged.min.css",
+    "watch": "sass --watch --load-path=node_modules --quiet-deps --no-source-map scss/theme.scss styles/theme.css"
+  }
+}

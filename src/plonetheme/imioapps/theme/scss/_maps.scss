@@ -1,0 +1,20 @@
+// =========================================================================
+// Bootstrap map overrides. Load after _variables.scss and before the
+// Barceloneta base.
+// =========================================================================
+
+@import "tokens";
+
+// The 4px spacing ladder from the iMio design system. Bootstrap builds
+// every spacing utility from this map, so m-5 and p-5 give 24px.
+$spacers: (
+  0: 0,
+  1: $imio-sp-1,
+  2: $imio-sp-2,
+  3: $imio-sp-3,
+  4: $imio-sp-4,
+  5: $imio-sp-5,
+  6: $imio-sp-6,
+  7: $imio-sp-7,
+  8: $imio-sp-8,
+);

@@ -1,0 +1,15 @@
+// =========================================================================
+// GED skin.
+//
+// It loads after the base theme CSS. It redefines only the skin surface
+// that _custom.scss declares.
+//
+// The accent and the workflow colors still need real values. Until then
+// this skin follows the base.
+// =========================================================================
+
+@import "../tokens";
+
+:root {
+  --imio-skin: "ged";
+}

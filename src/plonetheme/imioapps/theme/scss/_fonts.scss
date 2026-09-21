@@ -1,0 +1,23 @@
+// =========================================================================
+// Self-hosted fonts. See ../fonts/README.rst for the files to supply.
+// =========================================================================
+
+@each $weight in (300, 400, 500, 600, 700) {
+  @font-face {
+    font-family: "Quicksand";
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("../fonts/quicksand-latin-#{$weight}-normal.woff2") format("woff2");
+  }
+}
+
+@each $weight in (400, 600, 700) {
+  @font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: $weight;
+    font-display: swap;
+    src: url("../fonts/nunito-latin-#{$weight}-normal.woff2") format("woff2");
+  }
+}

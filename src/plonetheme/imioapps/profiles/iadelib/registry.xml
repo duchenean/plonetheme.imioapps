@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<registry>
+
+  <!-- Skin CSS for iA.Delib. It loads after the base theme CSS and only
+       redefines the custom properties a skin owns. -->
+  <records interface="plone.base.interfaces.resources.IBundleRegistry"
+           prefix="plone.bundles/imioapps-iadelib">
+    <value key="enabled">True</value>
+    <value key="csscompilation">++theme++imioapps/styles/skin-iadelib.min.css</value>
+    <value key="depends">plone</value>
+    <value key="load_async">False</value>
+    <value key="load_defer">False</value>
+  </records>
+
+</registry>
